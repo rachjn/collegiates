@@ -1,1 +1,8 @@
 @import "tailwindcss";
+
+@theme {
+  --font-gothic: "franklin-gothic-atf", sans-serif;
+  --color-off-white: #faf9f6;
+  --color-primary: #5f24f2;
+  --color-secondary: #404fb3;
+}
