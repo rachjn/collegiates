@@ -1,18 +1,38 @@
 import Link from "next/link";
 
-function Button({ children }) {
+function Button({ children, isLink = false }) {
   return (
     <>
-      <div className="flex ">
-        <Link
-          href={`/${children.toLowerCase().replace(/\s/g, "")}`}
-          className="bg-primary rounded-full py-1 px-5 font-bold text-off-white"
-        >
+      {isLink ? (
+        <div className="flex ">
+          <Link
+            href={`/${children.toLowerCase().replace(/\s/g, "")}`}
+            className="bg-primary rounded-full py-1 px-5 font-bold text-off-white"
+          >
+            {children}
+          </Link>
+        </div>
+      ) : (
+        <div className="flex ">
+          <span className="bg-primary rounded-full py-1 px-5 font-bold text-off-white cursor-pointer">
+            {children}
+          </span>
+        </div>
+      )}
+    </>
+  );
+}
+
+function LongButton({ children }) {
+  return (
+    <>
+      <div className="flex">
+        <span className="bg-primary rounded-full w-full py-2 text-lg font-bold text-off-white cursor-pointer">
           {children}
-        </Link>
+        </span>
       </div>
     </>
   );
 }
 
-export { Button };
+export { Button, LongButton };

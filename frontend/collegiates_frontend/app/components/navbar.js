@@ -15,7 +15,7 @@ function NavBar() {
             </Link>
           ))}
         </div>
-        <Button>Sign In</Button>
+        <Button isLink={true}>Sign In</Button>
       </div>
     </div>
   );

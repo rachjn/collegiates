@@ -5,4 +5,14 @@
   --color-off-white: #faf9f6;
   --color-primary: #5f24f2;
   --color-secondary: #404fb3;
+  --color-dark: rgb(33, 30, 47);
+}
+
+input:focus {
+  outline: none;
+  border: none;
+}
+
+select {
+  outline: none; /* Remove the outline when focused */
 }
