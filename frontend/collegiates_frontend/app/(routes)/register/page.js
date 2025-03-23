@@ -11,9 +11,26 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 
 export default function Register() {
-  const experiences = ["B", "I", "A"];
-  const [colleges, setColleges] = useState([]);
-  const sexes = ["M", "F"];
+  const experiences = { Beginner: "B", Intermediate: "I", Advanced: "A" };
+  const classTypes = {
+    // CAN BE INFERRED BASED ON STUDENT TYPE CHOSEN.
+    "Full/Part-time Undergraduate": "1",
+    "Full-time Graduate/Professional School": "1",
+    "Fall/Winter Graduates of Current Academic Year": "1",
+    "Non-enrolled student": "2",
+    "1yr Alumni": "2",
+  };
+
+  const studentTypes = {
+    "Full/Part-time Undergraduate": "1",
+    "Full-time Graduate/Professional School": "2",
+    "Non-enrolled student": "3",
+    "Fall/Winter Graduates of Current Academic Year": "4",
+    "1yr Alumni": "5",
+  };
+
+  const [colleges, setColleges] = useState({});
+  const sexes = { Male: "M", Female: "F" };
   const [formData, setFormData] = useState({});
   const [nextPage, setNextPage] = useState(false);
 
@@ -34,7 +51,11 @@ export default function Register() {
     })
       .then((res) => res.json())
       .then((json) =>
-        setColleges(json.map(({ college_name }) => college_name))
+        setColleges(
+          Object.fromEntries(
+            json.map(({ college_name }) => [college_name, college_name])
+          )
+        )
       );
   }, []);
 
@@ -133,7 +154,7 @@ export default function Register() {
                 label="Graduation Date"
                 name="grad_date"
                 onChange={handleChange}
-                value={formData.birth_date || ""}
+                value={formData.grad_date || ""}
                 className="w-40"
               />
             </div>
@@ -156,19 +177,29 @@ export default function Register() {
               />
             </div>
             <Dropdown
-              options={sexes}
-              label="Sex"
-              name="sex"
-              onChange={handleChange}
-              value={formData.sex || ""}
-            />
-            <Dropdown
               options={colleges}
               label="College"
               name="college"
               onChange={handleChange}
               value={formData.college || ""}
             />
+            <div className="flex justify-between gap-2">
+              <Dropdown
+                options={sexes}
+                label="Sex"
+                name="sex"
+                onChange={handleChange}
+                value={formData.sex || ""}
+              />
+
+              <Dropdown
+                options={studentTypes}
+                label="Student Type"
+                name="student_type"
+                onChange={handleChange}
+                value={formData.student_type || ""}
+              />
+            </div>
             <button onClick={handleSubmit} type="submit">
               submit
             </button>

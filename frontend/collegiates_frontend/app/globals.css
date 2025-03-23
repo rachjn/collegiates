@@ -3,6 +3,7 @@
 @theme {
   --font-gothic: "franklin-gothic-atf", sans-serif;
   --color-off-white: #faf9f6;
+  --color-inner: #faf9f7;
   --color-primary: #5f24f2;
   --color-secondary: #404fb3;
   --color-dark: rgb(33, 30, 47);

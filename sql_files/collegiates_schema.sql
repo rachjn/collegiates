@@ -8,7 +8,7 @@ CREATE TABLE IF NOT EXISTS admin_account (
 
 CREATE TABLE IF NOT EXISTS user_account (
   user_id INT PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
-  username VARCHAR(20) NOT NULL UNIQUE,
+  username VARCHAR(20) NOT NULL,
   pword VARCHAR(32)  NOT NULL,
   first_name VARCHAR(255) NOT NULL,
   last_name VARCHAR(255) NOT NULL,
@@ -39,7 +39,7 @@ CREATE TABLE IF NOT EXISTS blog_post (
 
 CREATE TABLE IF NOT EXISTS registered_events (
   events_id INT PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
-  user_id INT NOT NULL  REFERENCES user_account(user_id),
+  user_id INT NOT NULL REFERENCES "user_account"("user_id"),
   comp_year INT NOT NULL,
   register_date TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT CURRENT_TIMESTAMP,
   paid BOOLEAN NOT NULL DEFAULT FALSE,
@@ -69,7 +69,7 @@ CREATE TABLE IF NOT EXISTS registered_events (
   trad_short BOOLEAN DEFAULT FALSE,
   trad_soft BOOLEAN DEFAULT FALSE,
   group_set BOOLEAN DEFAULT FALSE,
-  group_set_id BOOLEAN DEFAULT FALSE
+  group_set_id INTEGER REFERENCES "team"("team_id")
 );
 
 CREATE TABLE IF NOT EXISTS nandu (
@@ -93,3 +93,92 @@ CREATE TABLE IF NOT EXISTS team (
   email VARCHAR(255)  NOT NULL
 );
 
+
+
+-- for testing
+
+CREATE TABLE IF NOT EXISTS user_account_dupes (
+  user_id INT PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+  username VARCHAR(20) NOT NULL,
+  pword VARCHAR(32)  NOT NULL,
+  first_name VARCHAR(255) NOT NULL,
+  last_name VARCHAR(255) NOT NULL,
+  email VARCHAR(255)  NOT NULL,
+  sex CHAR(1)  NOT NULL,
+  birth_date DATE NOT NULL,
+  grad_date DATE NOT NULL,
+  college VARCHAR(255) NOT NULL REFERENCES college(college_name),
+  student_type CHAR(1)  NOT NULL,
+  class_type CHAR(1) NOT NULL,
+  xp char(1)  NOT NULL,
+  first_comp_year INT NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS user_account_email (
+  user_id INT PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+  username VARCHAR(20) NOT NULL,
+  pword VARCHAR(32)  NOT NULL,
+  first_name VARCHAR(255) NOT NULL,
+  last_name VARCHAR(255) NOT NULL,
+  email VARCHAR(255)  NOT NULL UNIQUE,
+  sex CHAR(1)  NOT NULL,
+  birth_date DATE NOT NULL,
+  grad_date DATE NOT NULL,
+  college VARCHAR(255) NOT NULL REFERENCES college(college_name),
+  student_type CHAR(1)  NOT NULL,
+  class_type CHAR(1) NOT NULL,
+  xp char(1)  NOT NULL,
+  first_comp_year INT NOT NULL
+);
+
+
+
+CREATE TABLE IF NOT EXISTS team_no_foreign (
+  team_id INT PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+  comp_year INT NOT NULL,
+  team_name VARCHAR(255) NOT NULL,
+  college VARCHAR(255) NOT NULL,
+  captain_id INT NOT NULL,
+  member2_id INT NOT NULL,
+  member3_id INT NOT NULL,
+  member4_id INT NOT NULL,
+  member5_id INT NOT NULL,
+  member6_id INT NOT NULL,
+  email VARCHAR(255)  NOT NULL
+);
+
+
+CREATE TABLE IF NOT EXISTS registered_events_no_foreign (
+  events_id INT PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+  user_id INT NOT NULL,
+  comp_year INT NOT NULL,
+  register_date TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  paid BOOLEAN NOT NULL DEFAULT FALSE,
+  changquan BOOLEAN DEFAULT FALSE,
+  nanquan BOOLEAN DEFAULT FALSE,
+  changquan_nandu BOOLEAN DEFAULT FALSE,
+  nanquan_nandu BOOLEAN DEFAULT FALSE,
+  b_sword BOOLEAN DEFAULT FALSE,
+  s_sword BOOLEAN DEFAULT FALSE,
+  nandao BOOLEAN DEFAULT FALSE,
+  staff BOOLEAN DEFAULT FALSE,
+  spear BOOLEAN DEFAULT FALSE,
+  nangun BOOLEAN DEFAULT FALSE,
+  o_bare BOOLEAN DEFAULT FALSE,
+  o_weapon BOOLEAN DEFAULT FALSE,
+  taiji_24 BOOLEAN DEFAULT FALSE,
+  yang BOOLEAN DEFAULT FALSE,
+  chen BOOLEAN DEFAULT FALSE,
+  fist_42 BOOLEAN DEFAULT FALSE,
+  sword_42 BOOLEAN DEFAULT FALSE,
+  taiji_weapon BOOLEAN DEFAULT FALSE,
+  int_o_weapon BOOLEAN DEFAULT FALSE,
+  int_o_bare BOOLEAN DEFAULT FALSE,
+  taiji_bare_nandu BOOLEAN DEFAULT FALSE,
+  trad_bare BOOLEAN DEFAULT FALSE,
+  trad_long BOOLEAN DEFAULT FALSE,
+  trad_short BOOLEAN DEFAULT FALSE,
+  trad_soft BOOLEAN DEFAULT FALSE,
+  group_set BOOLEAN DEFAULT FALSE,
+  group_set_id INTEGER REFERENCES "team"("team_id")
+);
