@@ -28,7 +28,7 @@ export default function RootLayout({ children }) {
         className={`antialiased bg-off-white text-dark font-grotesk mx-24 my-2`}
       >
         <NavBar />
-        <div className="mt-10">{children}</div>
+        <div className="mt-24">{children}</div>
       </body>
     </html>
   );
