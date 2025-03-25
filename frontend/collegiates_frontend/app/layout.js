@@ -22,9 +22,10 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <head>
         <link rel="stylesheet" href="https://use.typekit.net/org5cfx.css" />
+        <link rel="stylesheet" href="https://use.typekit.net/zao2vdq.css" />
       </head>
       <body
-        className={`antialiased bg-off-white text-dark font-mundial mx-24 my-2`}
+        className={`antialiased bg-off-white text-dark font-grotesk mx-24 my-2`}
       >
         <NavBar />
         <div className="mt-10">{children}</div>

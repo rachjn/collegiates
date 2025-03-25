@@ -5,7 +5,7 @@ const tabs = ["News", "Multimedia", "Tournament", "Rules", "About"];
 
 function NavBar() {
   return (
-    <div className="flex p-4 font-bold bg-off-white rounded-lg px-12">
+    <div className="flex p-4 bg-off-white rounded-lg px-12 border border-b border-brown/50">
       <div className="justify-between flex w-full">
         <div className="flex gap-10 items-center">
           <Link href="/">Home</Link>

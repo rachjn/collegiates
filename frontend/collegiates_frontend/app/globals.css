@@ -2,11 +2,13 @@
 
 @theme {
   --font-gothic: "franklin-gothic-atf", sans-serif;
+  --font-grotesk: "aktiv-grotesk", sans-serif;
   --color-off-white: #faf9f6;
   --color-inner: #faf9f7;
   --color-primary: #5f24f2;
   --color-secondary: #404fb3;
   --color-dark: rgb(33, 30, 47);
+  --color-brown: #1c1513;
 }
 
 input:focus {
@@ -16,4 +18,35 @@ input:focus {
 
 select {
   outline: none; /* Remove the outline when focused */
+}
+
+/* @keyframes scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+.animate-scroll {
+  animation: scroll 10s linear infinite;
+} */
+
+@keyframes scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-scroll {
+  animation: scroll 15s linear infinite;
+  display: flex;
+  width: max-content;
+}
+.animate-scroll:hover {
+  animation-play-state: paused;
 }
