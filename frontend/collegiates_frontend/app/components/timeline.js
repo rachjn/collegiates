@@ -1,20 +1,12 @@
 import { Heading } from "./heading";
 
-function Timeline() {
+function TimelineSection() {
   const collegiatesNum = 26;
   const hostSchool = "University of Maryland, College Park";
-  const regOpens = "Feburary 8, 2025";
-  const earlyRegDeadline = "March 8, 2025";
-  const compDocsDeadline = "March 8, 2025";
-  const regFeeDeadline = "8 AM on Competition Day";
-
   return (
     <>
-      <div className="flex flex-wrap">
-        <div
-          id="left-side"
-          className="lg:ml-[10vw] flex flex-col max-w-[30rem] gap-4"
-        >
+      <div className="flex flex-wrap items-center mx-10 justify-center gap-40 -ml-[25rem]">
+        <div id="left-side" className="flex flex-col max-w-[30svw] gap-4">
           <Heading className="!text-7xl text-left">
             {collegiatesNum}th Annual Collegiate Wushu Tournament
           </Heading>
@@ -23,23 +15,61 @@ function Timeline() {
           </h2>
         </div>
 
-        <div id="right-side">
-          <TimelineEvent />
+        <div id="center">
+          <Timeline />
         </div>
       </div>
     </>
   );
 }
 
-function TimelineEvent() {
+function Timeline() {
+  const events = {
+    "Registration Opens": "Feburary 8, 2025",
+    "Early Registration": "March 8, 2025",
+    "Competitor Documentation": "March 8, 2025",
+    "Registration Fee Deadline": "8 AM on Competition Day",
+  };
+
   return (
     <>
-      <div className="bg-gray-400 py-4 pr-10 pl-12 rounded-lg text-xl">
-        <h3>Event Event event Name</h3>
-        <h3>Event Event event Date</h3>
+      {/* Line */}
+      <div className="h-[24rem] w-4 bg-secondary relative">
+        {/* Events and Dots */}
+        <div className="h-full absolute -top-12 -left-4 flex flex-col gap-[10%]">
+          {Object.entries(events).map(([event, date], index) => (
+            <TimelineEntry key={index} eventTitle={event} eventDate={date} />
+          ))}
+        </div>
       </div>
     </>
   );
 }
 
-export { Timeline };
+function TimelineEntry({ eventTitle, eventDate }) {
+  return (
+    <div className="flex items-center gap-10 group">
+      {/* Dot */}
+      <div
+        className="flex-shrink-0 h-12 w-12 rounded-full bg-secondary 
+        group-hover:scale-110 group-hover:bg-primary group-hover:shadow-[0px_0px_35px_6px_rgba(82,110,255,1)]
+        transition ease-in duration-3s"
+      />
+
+      <div className="flex-shrink-0">
+        {/* Timeline Event */}
+        <div
+          className="bg-off-white py-4 pr-10 pl-8 rounded-lg text-2xl
+        min-w-[24rem] tracking-tighter shadow-[0px_0px_14px_4px_rgba(174,168,167,.3)]
+        hover:shadow-[0px_0px_14px_4px_rgba(82,110,255,.5)]
+        transition ease-in duration-3s"
+        >
+          <h3>{eventTitle}</h3>
+          <h3 className="font-bold">{eventDate}</h3>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export { TimelineSection as Timeline };
