@@ -36,7 +36,7 @@ function Timeline() {
       {/* Line */}
       <div className="h-[24rem] w-4 bg-secondary relative">
         {/* Events and Dots */}
-        <div className="h-full absolute -top-12 -left-4 flex flex-col gap-[10%]">
+        <div className="h-full absolute -top-12 -left-4 flex flex-col gap-[8%]">
           {Object.entries(events).map(([event, date], index) => (
             <TimelineEntry key={index} eventTitle={event} eventDate={date} />
           ))}
@@ -52,7 +52,7 @@ function TimelineEntry({ eventTitle, eventDate }) {
       {/* Dot */}
       <div
         className="flex-shrink-0 h-12 w-12 rounded-full bg-secondary 
-        group-hover:scale-110 group-hover:bg-primary group-hover:shadow-[0px_0px_35px_6px_rgba(82,110,255,1)]
+        group-hover:scale-110 group-hover:bg-primary group-hover:shadow-[0px_0px_20px_4px_rgba(82,110,255,1)]
         transition ease-in duration-3s"
       />
 
@@ -60,8 +60,8 @@ function TimelineEntry({ eventTitle, eventDate }) {
         {/* Timeline Event */}
         <div
           className="bg-off-white py-4 pr-10 pl-8 rounded-lg text-2xl
-        min-w-[24rem] tracking-tighter shadow-[0px_0px_14px_4px_rgba(174,168,167,.3)]
-        hover:shadow-[0px_0px_14px_4px_rgba(82,110,255,.5)]
+        min-w-[24rem] tracking-tighter border border-brown/50
+        group-hover:shadow-[0px_0px_14px_4px_rgba(190,188,187,.8)] group-hover:border-transparent group-hover:outline-solid
         transition ease-in duration-3s"
         >
           <h3>{eventTitle}</h3>
