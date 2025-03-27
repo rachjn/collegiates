@@ -75,10 +75,10 @@ export default function Register() {
 
   return (
     <>
-      <div
+      {/* <div
         id="bg-component"
-        className="bg-secondary h-screen w-full skew-y-6 absolute -top-[50vh] left-0 -z-20"
-      ></div>
+        className="bg-secondary h-screen w-full skew-y-6 absolute -top-[50svh] left-0 -z-20"
+      ></div> */}
       {!nextPage ? (
         <AuthPanel
           bottomLabel="Already registered? "

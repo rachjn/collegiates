@@ -52,8 +52,8 @@ function TimelineEntry({ eventTitle, eventDate }) {
       {/* Dot */}
       <div
         className="flex-shrink-0 h-12 w-12 rounded-full bg-secondary 
-        group-hover:scale-110 group-hover:bg-primary group-hover:shadow-[0px_0px_20px_4px_rgba(82,110,255,1)]
-        transition ease-in duration-3s"
+        group-hover:scale-110 group-hover:bg-primary group-hover:shadow-[0px_0px_30px_6px_rgba(82,110,255,1)]
+        transition ease-in duration-2s"
       />
 
       <div className="flex-shrink-0">
@@ -61,8 +61,8 @@ function TimelineEntry({ eventTitle, eventDate }) {
         <div
           className="bg-off-white py-4 pr-10 pl-8 rounded-lg text-2xl
         min-w-[24rem] tracking-tighter border border-brown/50
-        group-hover:shadow-[0px_0px_14px_4px_rgba(190,188,187,.8)] group-hover:border-transparent group-hover:outline-solid
-        transition ease-in duration-3s"
+        group-hover:shadow-[0px_0px_14px_4px_rgba(190,188,187,.4)] group-hover:border-transparent group-hover:outline-solid
+        transition ease-in duration-2s"
         >
           <h3>{eventTitle}</h3>
           <h3 className="font-bold">{eventDate}</h3>

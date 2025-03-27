@@ -5,6 +5,7 @@ import { Button } from "./components/button";
 import { Carousel } from "./components/carousel";
 import { Timeline } from "./components/timeline";
 import { Heading } from "./components/heading";
+import { CWCReps } from "./components/cwcReps";
 
 export default function Home() {
   // TODO: make more flexible to add/remove/change images
@@ -13,7 +14,9 @@ export default function Home() {
   return (
     <>
       {/* Hero */}
-      <Heading textSize="text-8xl">Welcome to Collegiate Wushu</Heading>
+      <Heading className="text-8xl animate-fadeIn">
+        Welcome to Collegiate Wushu
+      </Heading>
 
       <div className="py-6">
         <Carousel imgs={carouselImages} />
@@ -21,6 +24,10 @@ export default function Home() {
 
       <div className="py-[12rem]">
         <Timeline />
+      </div>
+
+      <div className="py-[6rem]">
+        <CWCReps />
       </div>
     </>
   );

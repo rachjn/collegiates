@@ -10,8 +10,12 @@ function ShortAnswer({ label, ...props }) {
   return (
     <>
       <label className="flex flex-col gap-2">
-        <span className="capitalize font-bold text-sm">{label}</span>
-        <div className="transition-outline ease-in-out duration-200 border border-gray-300 focus-within:outline-2 focus-within:outline-primary rounded-md py-[.5px] px-2">
+        <span className="capitalize text-sm">{label}</span>
+        <div
+          className="transition-outline ease-in-out duration-100 border border-brown/20
+        focus-within:border-transparent focus-within:outline-2 focus-within:outline-dark
+        rounded-md py-[.5px] px-2"
+        >
           <input {...props} className="py-2 w-full" />
         </div>
       </label>
@@ -20,18 +24,12 @@ function ShortAnswer({ label, ...props }) {
 }
 
 function Dropdown({ label, options, ...props }) {
-  // function getList(options) {
-  //   const comps = [];
-  //   options.forEach((value, key) => comps.push([key, value]));
-  //   return comps;
-  // }
-  // const optionsList = getList(options);
   const optionsList = Object.entries(options);
 
   return (
     <>
       <label className="min-w-[11rem] flex flex-col gap-2">
-        <span className="capitalize font-bold text-sm">{label}</span>
+        <span className="capitalize text-sm">{label}</span>
         <div className="relative flex flex-col gap-2 transition-outline ease-in-out duration-200 border border-gray-300 focus-within:outline-2 focus-within:outline-primary rounded-md py-[10px] px-2">
           <select {...props}>
             <option value=""></option>
@@ -47,13 +45,11 @@ function Dropdown({ label, options, ...props }) {
   );
 }
 
-const obj = { a: 1, b: 2, c: 2 };
-
 function DatePicker({ label, ...props }) {
   return (
     <>
       <label className="flex flex-col gap-2">
-        <span className="capitalize font-bold text-sm">{label}</span>
+        <span className="capitalize text-sm">{label}</span>
         <div className="transition-outline ease-in-out duration-200 border border-gray-300 focus-within:outline-2 focus-within:outline-primary rounded-md py-2 px-2">
           <input type="date" {...props} />
         </div>
